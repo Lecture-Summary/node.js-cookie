@@ -9,3 +9,9 @@ https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies
     res.writeHead(200, {
       "Set-Cookie": ["yummy_cookie=choco", "tasty_cookie=strawberry"]
     });
+
+## 쿠키의 읽기
+
+https://www.npmjs.com/package/cookie
+
+npm install -s cookie
