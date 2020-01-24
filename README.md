@@ -49,3 +49,28 @@ Cross-site 스크립팅 (XSS) 공격을 방지하기 위해, HttpOnly쿠키는 J
 예를 들어, 서버 쪽에서 지속되고 있는 세션의 쿠키는 JavaScript를 사용할 필요성이 없기 때문에 HttpOnly플래그가 설정될 것이다.
 
     Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Secure; HttpOnly
+
+## 쿠키의 스코프
+
+Domain 그리고 Path 디렉티브는 쿠키의 스코프를 정의합니다/
+
+어떤 URL을 쿠키가 보내야 하는지.
+
+Domain은 쿠키가 전송되게 될 호스트들을 명시합니다.
+
+만약 명시되지 않는다면, (서브 도메인은 포함되지 않는) 현재 문서 위치의 호스트 일부를 기본값으로 합니다.
+
+도메인이 명시되면, 서브도메인들은 항상 포함됩니다.
+
+만약 Domain=mozilla.org이 설정되면, 쿠키들은 developer.mozilla.org와 같은 서브도메인 상에 포함되게 됩니다.
+
+Path는 Cookie 헤더를 전송하기 위하여 요청되는 URL 내에 반드시 존재해야 하는 URL 경로입니다. %x2F ("/") 문자는 디렉티브 구분자로 해석되며 서브 디렉토리들과 잘 매치될 것입니다.
+
+만약 Path=/docs이 설정되면, 다음의 경로들은 모두 매치될 것입니다:
+
+/docs
+/docs/Web/
+/docs/Web/HTTP
+
+    "Path=Path; Path=/cookie",
+    "Domain=Domain; Domain=o2.org"
